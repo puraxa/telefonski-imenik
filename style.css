@@ -1,0 +1,19 @@
+body {
+  margin: auto;
+  width: 500px;
+}
+input {
+  width: 22%;
+}
+h4 {
+  display: inline-block;
+  width: 120px;
+}
+th,td {
+  width: 30%;
+  text-align: center;
+  border: solid;
+}
+table {
+  border-collapse: collapse;
+}

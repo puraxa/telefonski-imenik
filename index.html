@@ -1,0 +1,38 @@
+<!doctype  html>
+<html>
+  <head>
+    <title>Telefonski imenik</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script>
+      function addToTable(){
+        let name = document.getElementById('name').value;
+        let surname = document.getElementById('surname').value;
+        let telephone = document.getElementById('telephone').value;
+        document.getElementById('table').style = 'display: initial';
+        document.getElementById('tbody').innerHTML += `<tr><td>${name}</td><td>${surname}</td><td>${telephone}</td></tr>`;
+        console.log(name + ' ' + surname + ' ' + telephone);
+      }
+    </script>
+  </head>
+  <body>
+    <h4>Ime</h4><input id="name" type="text"><br>
+    <h4>Prezime</h4><input id="surname" type="text"><br>
+    <h4>Broj telefona</h4><input id="telephone" type="text"><br>
+    <input type="submit" title="dodaj" value="dodaj" onclick="addToTable()">
+    <br>
+    <br>
+    <br>
+    <br>
+    <table id="table" style="display:none;">
+      <thead>
+        <tr>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Broj telefona</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </body>
+</html>
