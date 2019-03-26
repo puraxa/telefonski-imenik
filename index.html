@@ -17,13 +17,19 @@
     <table id="table" style="display:none;">
       <thead>
         <tr>
-          <th>Ime</th>
-          <th>Prezime</th>
-          <th>Broj telefona</th>
+          <th onclick="sorting('tname')" class="thtd">Ime <span id="tname"></span></th>
+          <th onclick="sorting('tsurname')" class="thtd">Prezime <span id="tsurname"></span></th>
+          <th onclick="sorting('tphone')" class="thtd">Broj telefona <span id="tphone"></span></th>
+          <th class="thtd">Check</th>
         </tr>
       </thead>
       <tbody id="tbody">
       </tbody>
     </table>
+    <button onclick="deleteUser()">Izbrisi</button><br>
+    <h4>Background color</h4><input type="color" id="bg-color"><br>
+    <h4>Border color</h4><input type="color" id="bc-color"><br>
+    <h4>Font color</h4><input type="color" id="fc-color"><br>
+    <button onclick="changeapperance()">Promjeni</button>
   </body>
 </html>

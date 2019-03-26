@@ -9,14 +9,15 @@ h4 {
   display: inline-block;
   width: 120px;
 }
-th,td {
-  width: 30%;
-  text-align: center;
-  border: solid;
-}
 table {
   border-collapse: collapse;
 }
+th,td {
+  width: 20%;
+  text-align: center;
+  border: solid;
+}
+
 #dodaj {
   width: 150px;
 }
