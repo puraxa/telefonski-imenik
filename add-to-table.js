@@ -8,8 +8,8 @@ function sorting(column){
   document.getElementsByTagName('span').innerHTML = "";
   document.getElementById('tbody').innerHTML = "";
   users = users.sort(function(a,b) {
-    let aName = a[column];
-    let bName = b[column];
+    let aName = a[column].toUpperCase();
+    let bName = b[column].toUpperCase();
     if (!isSorted(column)) {
       document.getElementById(column).innerHTML = '&#x2193;';
       if (aName < bName) return -1;
@@ -30,7 +30,6 @@ function displayTable(){
     document.getElementById('tbody').innerHTML += `<tr><td class="thtd">${users[i].tname}</td><td class="thtd">${users[i].tsurname}</td><td class="thtd">${users[i].tphone}</td><td class="thtd"><input type="checkbox" name="delete" value="${users[i].no}"></td></tr>`
   }
   let clas = document.getElementsByClassName('thtd');
-  console.log(clas);
   for(let i = 0; i < clas.length; i++){
     clas[i].style.backgroundColor = ''+globalBackround+'';
     clas[i].style.borderColor = `${globalBorder}`;
@@ -46,12 +45,11 @@ function addToTable(){
   users.push({tname: `${name}`,tsurname: `${surname}`,tphone: `${telephone}`,no: `${noUsers}`});
   displayTable();
   noUsers++;
-  console.log(users);
 }
 
 function isSorted(col){
   for(let i = 0 ; i < users.length - 1; i++){
-    if(users[i][col]>users[i+1][col]) return false;
+    if(users[i][col].toUpperCase()>users[i+1][col].toUpperCase()) return false;
   }
   return true;
 }
@@ -71,12 +69,9 @@ function clearInput(){
 }
 
 function changeapperance(){
-  let bgColor = document.getElementById('bg-color').value;
-  let bcColor = document.getElementById('bc-color').value;
-  let fcColor = document.getElementById('fc-color').value;
-  globalBackround = bgColor;
-  globalBorder = bcColor;
-  globalColor = fcColor;
+  globalBackround = document.getElementById('bg-color').value;
+  globalBorder = document.getElementById('bc-color').value;
+  globalColor = document.getElementById('fc-color').value;
 
   let clas = document.getElementsByClassName('thtd');
   for(let i = 0; i < clas.length; i++){
@@ -88,17 +83,15 @@ function changeapperance(){
 
 function deleteUser(id) {
   let check = document.getElementsByName('delete');
-  console.log(check);
-  for(let i = 0; i < check.length;i++){
-    if(check[i].checked){
-      for(let k = 0; k < users.length;k++){
-        if(check[i].value == users[k].no){
-          users.splice(k,1);
-          break;
-        }
-      }
+  let arrCheck = [];
+  for(let i = 0; i < check.length; i++){
+    arrCheck.push(check[i].value);
+  }
+  for(let i = 0; i < users.length;i++){
+    if(check[arrCheck.indexOf(users[i].no)].checked){
+      users.splice(i,1);
+      i--;
     }
   }
   displayTable();
-  console.log(users);
 }
