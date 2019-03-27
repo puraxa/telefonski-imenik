@@ -75,9 +75,9 @@ function changeapperance(){
 
   let clas = document.getElementsByClassName('thtd');
   for(let i = 0; i < clas.length; i++){
-    clas[i].style.backgroundColor = `${bgColor}`;
-    clas[i].style.borderColor = `${bcColor}`;
-    clas[i].style.color = `${fcColor}`;
+    clas[i].style.backgroundColor = `${globalBackround}`;
+    clas[i].style.borderColor = `${globalBorder}`;
+    clas[i].style.color = `${globalColor}`;
   }
 }
 
