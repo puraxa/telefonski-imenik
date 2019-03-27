@@ -3,14 +3,13 @@ let noUsers = 0;
 let globalColor = 'black';
 let globalBackround = 'white';
 let globalBorder = 'black';
+const helpSort = {tname: 0, tsurname:0, tphone:0};
 function sorting(column){
   clearSpan();
-  document.getElementsByTagName('span').innerHTML = "";
-  document.getElementById('tbody').innerHTML = "";
   users = users.sort(function(a,b) {
     let aName = a[column].toUpperCase();
     let bName = b[column].toUpperCase();
-    if (!isSorted(column)) {
+    if (helpSort[column]%2 == 0) {
       document.getElementById(column).innerHTML = '&#x2193;';
       if (aName < bName) return -1;
       if (aName > bName) return 1;
@@ -22,6 +21,7 @@ function sorting(column){
       return 0;
     }
   });
+  helpSort[column]++;
   displayTable();
 }
 function displayTable(){
@@ -45,13 +45,6 @@ function addToTable(){
   users.push({tname: `${name}`,tsurname: `${surname}`,tphone: `${telephone}`,no: `${noUsers}`});
   displayTable();
   noUsers++;
-}
-
-function isSorted(col){
-  for(let i = 0 ; i < users.length - 1; i++){
-    if(users[i][col].toUpperCase()>users[i+1][col].toUpperCase()) return false;
-  }
-  return true;
 }
 
 function clearSpan(){
